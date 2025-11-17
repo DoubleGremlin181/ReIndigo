@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /resume/
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {% if site.resume-external %}
+    <meta http-equiv="refresh" content="0; url={{ site.resume-url }}">
+    <link rel="canonical" href="{{ site.resume-url }}" />
+    {% else %}
+    <meta http-equiv="refresh" content="0; url={{ site.url }}/{{ site.resume-url }}">
+    <link rel="canonical" href="{{ site.url }}/{{ site.resume-url }}" />
+    {% endif %}
+</head>
+<body>
+    {% if site.resume-external %}
+    <p>Redirecting to <a href="{{ site.resume-url }}">resume</a>...</p>
+    {% else %}
+    <p>Redirecting to <a href="{{ site.url }}/{{ site.resume-url }}">resume</a>...</p>
+    {% endif %}
+</body>
+</html>
