@@ -30,12 +30,10 @@
             {% endif %}
         {% endif %}
 
-        {% for redirect in site.data.redirects %}
-            {% if redirect.nav %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/{{ redirect.from }}">{{ redirect.label }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
+        {% if site.resume == true %}
+            <li class="item">
+                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Résumé</a>
+            </li>
+        {% endif %}
     </ul>
 </nav>

@@ -1,25 +1,19 @@
 # Vanity URL Redirects
 # ====================
 # Each entry creates a redirect page at /<from> that sends visitors to <to>.
-#
-# After editing this file, run:
-#   python scripts/generate_redirects.py
-#
-# The script will:
-#   - Generate redirect HTML pages for each entry
-#   - Validate that no vanity URLs conflict with existing site pages or each other
+# Pages are generated at build time by _plugins/vanity_redirects.rb.
+# The plugin also validates that no vanity URLs conflict with existing
+# site pages, blog posts, or each other.
 #
 # Fields:
 #   from:             URL path (without leading /). Creates a page at /<from>.
 #   to:               Target URL to redirect to.
-#   label:            Display name (used in nav bar and fallback link text).
+#   label:            Display name (shown in the fallback link text).
 #   external:         true for absolute URLs, false for site-relative paths (default: true).
 #   analytics_event:  Custom Google Analytics event name (optional, defaults to "<from>_redirect").
-#   nav:              Show this link in the site navigation bar (default: false).
 
 - from: resume
   to: https://google.com/?q=my+resume
   label: Résumé
   external: true
   analytics_event: resume_redirect
-  nav: true

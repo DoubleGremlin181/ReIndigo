@@ -14,8 +14,14 @@ picture: assets/images/profile.jpg
 # false to light theme, auto to switch with system.
 dark-theme: auto
 
+# If you want to include your resume, set to true
+# and specify source (external or local).
+resume: true
+resume-external: true
+resume-url: https://google.com/?q=my+resume
+
 # Vanity URL redirects are configured in _data/redirects.yml
-# Run `python scripts/generate_redirects.py` after editing.
+# and generated at build time by _plugins/vanity_redirects.rb.
 
 # Site URL — updated for ReIndigo
 url: https://reindigo.kavi.sh/
@@ -113,5 +119,4 @@ exclude:
     "Gemfile.lock",
     "FAQ.md",
     "vendor",
-    "scripts",
   ]
