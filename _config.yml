@@ -20,6 +20,9 @@ resume: true
 resume-external: true
 resume-url: https://google.com/?q=my+resume
 
+# Vanity URL redirects are configured in _data/redirects.yml
+# and generated at build time by _plugins/vanity_redirects.rb.
+
 # Site URL — updated for ReIndigo
 url: https://reindigo.kavi.sh/
 # your url: https://USERNAME.github.io
@@ -101,6 +104,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-redirect-from
   - jemoji
 
 compress_html:
