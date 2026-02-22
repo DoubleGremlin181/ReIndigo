@@ -1,19 +1,15 @@
 # Vanity URL Redirects
 # ====================
 # Each entry creates a redirect page at /<from> that sends visitors to <to>.
-# Pages are generated at build time by _plugins/vanity_redirects.rb.
+# Pages are generated at build time by _plugins/vanity_redirects.rb and
+# rendered by the jekyll-redirect-from gem (bundled with github-pages).
+#
 # The plugin also validates that no vanity URLs conflict with existing
-# site pages, blog posts, or each other.
+# site pages, blog posts, or each other — errors appear in the build log.
 #
 # Fields:
-#   from:             URL path (without leading /). Creates a page at /<from>.
-#   to:               Target URL to redirect to.
-#   label:            Display name (shown in the fallback link text).
-#   external:         true for absolute URLs, false for site-relative paths (default: true).
-#   analytics_event:  Custom Google Analytics event name (optional, defaults to "<from>_redirect").
+#   from:   URL path (without leading /). Creates a page at /<from>.
+#   to:     Target URL to redirect to (absolute or site-relative).
 
 - from: resume
   to: https://google.com/?q=my+resume
-  label: Résumé
-  external: true
-  analytics_event: resume_redirect

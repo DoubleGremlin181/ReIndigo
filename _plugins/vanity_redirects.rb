@@ -3,31 +3,20 @@
 # Jekyll generator that creates vanity URL redirect pages at build time
 # from the entries defined in _data/redirects.yml.
 #
-# Each entry produces a page that uses the "redirect" layout.
-# During generation the plugin also validates for URL conflicts
-# (duplicates, overlaps with existing pages/posts) and logs errors.
+# Pages are created with a `redirect_to` data attribute so that the
+# jekyll-redirect-from gem (bundled with github-pages) handles the
+# actual redirect HTML output.  This generator only needs to:
+#
+#   1. Materialise a page for each entry.
+#   2. Validate that no vanity URL conflicts with an existing page or post.
+#
+# Priority is set to :high so the pages exist in site.pages before the
+# jekyll-redirect-from generator (which runs at :normal) processes them.
 
 module Jekyll
-  class VanityRedirectPage < Page
-    def initialize(site, base, entry)
-      @site = site
-      @base = base
-      @dir  = ""
-      @name = "#{entry['from']}.html"
-
-      process(@name)
-
-      self.data = {
-        "layout"       => "redirect",
-        "redirect_key" => entry["from"],
-        "sitemap"      => false,
-      }
-    end
-  end
-
   class VanityRedirectsGenerator < Generator
     safe true
-    priority :low
+    priority :high
 
     def generate(site)
       redirects = site.data["redirects"]
@@ -40,7 +29,10 @@ module Jekyll
         to   = entry["to"]
         next unless from && to
 
-        site.pages << VanityRedirectPage.new(site, site.source, entry)
+        page = PageWithoutAFile.new(site, site.source, "", "#{from}.html")
+        page.data["redirect_to"] = to
+        page.data["sitemap"]     = false
+        site.pages << page
       end
     end
 
